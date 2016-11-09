@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Reglementinscritpion" table="reglementinscritpion">
+    <indexes>
+      <index name="I_FK_reglementInscritpion_typeReglement" columns="idTypeReglement"/>
+      <index name="I_FK_reglementInscritpion_inscriptionForfait" columns="idInscriptionForfait"/>
+    </indexes>
+    <id name="idreglementinscritpion" type="integer" column="idReglementInscritpion">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="datereglement" type="date" column="dateReglement" nullable="true"/>
+    <many-to-one field="idtypereglement" target-entity="Typereglement">
+      <join-columns>
+        <join-column name="idTypeReglement" referenced-column-name="idTypeReglement"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idinscriptionforfait" target-entity="Inscriptionforfait">
+      <join-columns>
+        <join-column name="idInscriptionForfait" referenced-column-name="idInscriptionForfait"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

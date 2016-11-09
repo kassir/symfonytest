@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Saison" table="saison">
+    <id name="idsaison" type="integer" column="idSaison">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="annee" type="integer" column="annee" nullable="true"/>
+    <field name="tarifadhesion" type="integer" column="tarifAdhesion" nullable="true"/>
+    <many-to-many field="idadherent" target-entity="Adherent" mapped-by="idsaison"/>
+  </entity>
+</doctrine-mapping>

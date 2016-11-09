@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Niveau" table="niveau">
+    <id name="idniveau" type="integer" column="idNiveau">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="libelleniveau" type="string" column="libelleNiveau" length="32" nullable="true"/>
+    <field name="descniveau" type="string" column="descNiveau" length="32" nullable="true"/>
+    <many-to-many field="idstage" target-entity="Stage" inversed-by="idniveau">
+      <join-table name="niveaudansestage">
+        <join-columns>
+          <join-column name="idNiveau" referenced-column-name="idNiveau"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="idStage" referenced-column-name="idStage"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Professeur</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nomprof</th>
+                <td>{{ professeur.nomprof }}</td>
+            </tr>
+            <tr>
+                <th>Prenomprof</th>
+                <td>{{ professeur.prenomprof }}</td>
+            </tr>
+            <tr>
+                <th>Telprof</th>
+                <td>{{ professeur.telprof }}</td>
+            </tr>
+            <tr>
+                <th>Emailprof</th>
+                <td>{{ professeur.emailprof }}</td>
+            </tr>
+            <tr>
+                <th>Tarifhorairecours</th>
+                <td>{{ professeur.tarifhorairecours }}</td>
+            </tr>
+            <tr>
+                <th>Forfaithorairestage</th>
+                <td>{{ professeur.forfaithorairestage }}</td>
+            </tr>
+            <tr>
+                <th>Idprof</th>
+                <td>{{ professeur.idprof }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('professeur_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('professeur_edit', { 'id': professeur.idprof }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

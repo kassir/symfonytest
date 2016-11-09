@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Qualifier" table="qualifier">
+    <indexes>
+      <index name="I_FK_qualifier_danse" columns="idDanse"/>
+      <index name="I_FK_qualifier_professeur" columns="idProf"/>
+      <index name="I_FK_qualifier_niveau" columns="idNiveau"/>
+    </indexes>
+    <id name="idniveau" association-key="true"/>
+    <id name="iddanse" association-key="true"/>
+    <id name="idprof" association-key="true"/>
+    <one-to-one field="idprof" target-entity="Professeur">
+      <join-columns>
+        <join-column name="idProf" referenced-column-name="idProf"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="iddanse" target-entity="Danse">
+      <join-columns>
+        <join-column name="idDanse" referenced-column-name="idDanse"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="idniveau" target-entity="Niveau">
+      <join-columns>
+        <join-column name="idNiveau" referenced-column-name="idNiveau"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

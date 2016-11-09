@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Reglementstage" table="reglementstage">
+    <indexes>
+      <index name="I_FK_reglementStage_stage" columns="idStage"/>
+      <index name="I_FK_reglementStage_stagiaire" columns="idStagiaire"/>
+    </indexes>
+    <id name="idreglementstage" type="integer" column="idReglementStage">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="datereglement" type="date" column="dateReglement" nullable="true"/>
+    <field name="montantreglement" type="integer" column="montantReglement" nullable="true"/>
+    <field name="etatreglement" type="string" column="etatReglement" length="32" nullable="true"/>
+    <many-to-one field="idstage" target-entity="Stage">
+      <join-columns>
+        <join-column name="idStage" referenced-column-name="idStage"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idstagiaire" target-entity="Stagiaire">
+      <join-columns>
+        <join-column name="idStagiaire" referenced-column-name="idStagiaire"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

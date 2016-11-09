@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Typeforfait" table="typeforfait">
+    <id name="idtypeforfait" type="integer" column="idTypeForfait">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="libelletypeforfait" type="string" column="libelleTypeForfait" length="32" nullable="true"/>
+    <field name="tariftypeforfait" type="integer" column="tarifTypeForfait" nullable="true"/>
+    <many-to-many field="iddanse" target-entity="Danse" mapped-by="idtypeforfait"/>
+  </entity>
+</doctrine-mapping>

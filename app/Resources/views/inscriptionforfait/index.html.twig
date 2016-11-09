@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Inscriptionforfait list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Dateinscriptionforfait</th>
+                <th>Etatinscriptionforfait</th>
+                <th>Idinscriptionforfait</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for inscriptionforfait in inscriptionforfaits %}
+            <tr>
+                <td><a href="{{ path('inscriptionforfait_show', { 'id': inscriptionforfait.idinscriptionforfait }) }}">{{ inscriptionforfait.dateinscriptionforfait }}</a></td>
+                <td>{{ inscriptionforfait.etatinscriptionforfait }}</td>
+                <td>{{ inscriptionforfait.idinscriptionforfait }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('inscriptionforfait_show', { 'id': inscriptionforfait.idinscriptionforfait }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('inscriptionforfait_edit', { 'id': inscriptionforfait.idinscriptionforfait }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('inscriptionforfait_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

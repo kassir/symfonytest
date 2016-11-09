@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Professeur" table="professeur">
+    <id name="idprof" type="integer" column="idProf">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomprof" type="string" column="nomProf" length="32" nullable="true"/>
+    <field name="prenomprof" type="string" column="prenomProf" length="32" nullable="true"/>
+    <field name="telprof" type="integer" column="telProf" nullable="true"/>
+    <field name="emailprof" type="string" column="eMailProf" length="32" nullable="true"/>
+    <field name="tarifhorairecours" type="integer" column="tarifHoraireCours" nullable="true"/>
+    <field name="forfaithorairestage" type="integer" column="forfaitHoraireStage" nullable="true"/>
+  </entity>
+</doctrine-mapping>

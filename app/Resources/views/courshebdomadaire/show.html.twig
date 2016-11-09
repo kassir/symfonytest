@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Courshebdomadaire</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Jourcourshebdo</th>
+                <td>{{ courshebdomadaire.jourcourshebdo }}</td>
+            </tr>
+            <tr>
+                <th>Heuredebutcourshebdo</th>
+                <td>{% if courshebdomadaire.heuredebutcourshebdo %}{{ courshebdomadaire.heuredebutcourshebdo|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Heurefincourshebdo</th>
+                <td>{% if courshebdomadaire.heurefincourshebdo %}{{ courshebdomadaire.heurefincourshebdo|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Idcourshebdo</th>
+                <td>{{ courshebdomadaire.idcourshebdo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('courshebdomadaire_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('courshebdomadaire_edit', { 'id': courshebdomadaire.idcourshebdo }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

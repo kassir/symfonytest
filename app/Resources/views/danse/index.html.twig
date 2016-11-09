@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Danse list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nomdanse</th>
+                <th>Iddanse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for danse in danses %}
+            <tr>
+                <td><a href="{{ path('danse_show', { 'id': danse.iddanse }) }}">{{ danse.nomdanse }}</a></td>
+                <td>{{ danse.iddanse }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('danse_show', { 'id': danse.iddanse }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('danse_edit', { 'id': danse.iddanse }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('danse_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

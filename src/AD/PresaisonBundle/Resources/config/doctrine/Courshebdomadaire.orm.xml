@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Courshebdomadaire" table="courshebdomadaire">
+    <indexes>
+      <index name="I_FK_coursHebdomadaire_salle" columns="idSalle"/>
+      <index name="I_FK_coursHebdomadaire_salle1" columns="idSalle_1"/>
+      <index name="I_FK_coursHebdomadaire_danse" columns="idDanse"/>
+      <index name="I_FK_coursHebdomadaire_danse1" columns="idDanse_1"/>
+      <index name="I_FK_coursHebdomadaire_niveau" columns="idNiveau"/>
+      <index name="I_FK_coursHebdomadaire_professeur" columns="idProf"/>
+    </indexes>
+    <id name="idcourshebdo" type="integer" column="idCoursHebdo">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="jourcourshebdo" type="string" column="jourCoursHebdo" length="32" nullable="true"/>
+    <field name="heuredebutcourshebdo" type="time" column="heureDebutCoursHebdo" nullable="true"/>
+    <field name="heurefincourshebdo" type="time" column="heureFinCoursHebdo" nullable="true"/>
+    <many-to-one field="iddanse1" target-entity="Danse">
+      <join-columns>
+        <join-column name="idDanse_1" referenced-column-name="idDanse"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idniveau" target-entity="Niveau">
+      <join-columns>
+        <join-column name="idNiveau" referenced-column-name="idNiveau"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="iddanse" target-entity="Danse">
+      <join-columns>
+        <join-column name="idDanse" referenced-column-name="idDanse"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idsalle1" target-entity="Salle">
+      <join-columns>
+        <join-column name="idSalle_1" referenced-column-name="idSalle"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idsalle" target-entity="Salle">
+      <join-columns>
+        <join-column name="idSalle" referenced-column-name="idSalle"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idprof" target-entity="Professeur">
+      <join-columns>
+        <join-column name="idProf" referenced-column-name="idProf"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

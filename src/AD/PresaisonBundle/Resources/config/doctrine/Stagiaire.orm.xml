@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Stagiaire" table="stagiaire">
+    <id name="idstagiaire" type="integer" column="idStagiaire">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomstagiaire" type="string" column="nomStagiaire" length="32" nullable="true"/>
+    <field name="prenomstagiaire" type="string" column="prenomStagiaire" length="32" nullable="true"/>
+    <field name="telstagiaire" type="integer" column="telStagiaire" nullable="true"/>
+    <many-to-many field="idstage" target-entity="Stage" mapped-by="idstagiaire"/>
+  </entity>
+</doctrine-mapping>

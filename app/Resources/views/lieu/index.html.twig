@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lieu list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nomlieu</th>
+                <th>Adresselieu</th>
+                <th>Idlieu</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lieu in lieus %}
+            <tr>
+                <td><a href="{{ path('lieu_show', { 'id': lieu.idlieu }) }}">{{ lieu.nomlieu }}</a></td>
+                <td>{{ lieu.adresselieu }}</td>
+                <td>{{ lieu.idlieu }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('lieu_show', { 'id': lieu.idlieu }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('lieu_edit', { 'id': lieu.idlieu }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('lieu_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

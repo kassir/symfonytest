@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Pratique" table="pratique">
+    <indexes>
+      <index name="I_FK_pratique_soiree" columns="idSoiree"/>
+      <index name="I_FK_pratique_salle" columns="idSalle"/>
+      <index name="I_FK_pratique_danse" columns="idDanse"/>
+    </indexes>
+    <id name="iddanse" association-key="true"/>
+    <id name="idsoiree" association-key="true"/>
+    <one-to-one field="iddanse" target-entity="Danse">
+      <join-columns>
+        <join-column name="idDanse" referenced-column-name="idDanse"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="idsoiree" target-entity="Soiree">
+      <join-columns>
+        <join-column name="idSoiree" referenced-column-name="idSoiree"/>
+      </join-columns>
+    </one-to-one>
+    <many-to-one field="idsalle" target-entity="Salle">
+      <join-columns>
+        <join-column name="idSalle" referenced-column-name="idSalle"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

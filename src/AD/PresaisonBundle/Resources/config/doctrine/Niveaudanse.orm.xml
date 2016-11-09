@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Niveaudanse" table="niveaudanse">
+    <indexes>
+      <index name="I_FK_niveauDanse_danse" columns="idDanse"/>
+      <index name="I_FK_niveauDanse_niveau" columns="idNiveau"/>
+      <index name="I_FK_niveauDanse_niveau1" columns="idNiveau_1"/>
+      <index name="I_FK_niveauDanse_danse1" columns="idDanse_1"/>
+      <index name="I_FK_niveauDanse_inscriptionForfait" columns="idInscriptionForfait"/>
+    </indexes>
+    <id name="idinscriptionforfait" association-key="true"/>
+    <id name="iddanse" association-key="true"/>
+    <id name="iddanse1" association-key="true"/>
+    <one-to-one field="idinscriptionforfait" target-entity="Inscriptionforfait">
+      <join-columns>
+        <join-column name="idInscriptionForfait" referenced-column-name="idInscriptionForfait"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="iddanse" target-entity="Danse">
+      <join-columns>
+        <join-column name="idDanse" referenced-column-name="idDanse"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="iddanse1" target-entity="Danse">
+      <join-columns>
+        <join-column name="idDanse_1" referenced-column-name="idDanse"/>
+      </join-columns>
+    </one-to-one>
+    <many-to-one field="idniveau" target-entity="Niveau">
+      <join-columns>
+        <join-column name="idNiveau" referenced-column-name="idNiveau"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idniveau1" target-entity="Niveau">
+      <join-columns>
+        <join-column name="idNiveau_1" referenced-column-name="idNiveau"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

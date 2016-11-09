@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Danse" table="danse">
+    <id name="iddanse" type="integer" column="idDanse">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomdanse" type="string" column="nomDanse" length="32" nullable="true"/>
+    <many-to-many field="idtypeforfait" target-entity="Typeforfait" inversed-by="iddanse">
+      <join-table name="danseciblee">
+        <join-columns>
+          <join-column name="idDanse" referenced-column-name="idDanse"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="idTypeForfait" referenced-column-name="idTypeForfait"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

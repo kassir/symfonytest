@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Adherent list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nomadherent</th>
+                <th>Prenomadherent</th>
+                <th>Datenaissadherent</th>
+                <th>Teladherent</th>
+                <th>Emailadherent</th>
+                <th>Idadherent</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for adherent in adherents %}
+            <tr>
+                <td><a href="{{ path('adherent_show', { 'id': adherent.idadherent }) }}">{{ adherent.nomadherent }}</a></td>
+                <td>{{ adherent.prenomadherent }}</td>
+                <td>{% if adherent.datenaissadherent %}{{ adherent.datenaissadherent|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ adherent.teladherent }}</td>
+                <td>{{ adherent.emailadherent }}</td>
+                <td>{{ adherent.idadherent }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('adherent_show', { 'id': adherent.idadherent }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('adherent_edit', { 'id': adherent.idadherent }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('adherent_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

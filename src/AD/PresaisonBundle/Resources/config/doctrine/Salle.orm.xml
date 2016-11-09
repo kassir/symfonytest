@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Salle" table="salle">
+    <indexes>
+      <index name="I_FK_salle_lieu" columns="idLieu"/>
+    </indexes>
+    <id name="idsalle" type="integer" column="idSalle">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomsalle" type="string" column="nomSalle" length="32" nullable="true"/>
+    <field name="capacite" type="integer" column="capacite" nullable="true"/>
+    <many-to-one field="idlieu" target-entity="Lieu">
+      <join-columns>
+        <join-column name="idLieu" referenced-column-name="idLieu"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

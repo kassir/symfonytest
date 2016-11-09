@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Inscriptionforfait</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Dateinscriptionforfait</th>
+                <td>{% if inscriptionforfait.dateinscriptionforfait %}{{ inscriptionforfait.dateinscriptionforfait|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Etatinscriptionforfait</th>
+                <td>{{ inscriptionforfait.etatinscriptionforfait }}</td>
+            </tr>
+            <tr>
+                <th>Idinscriptionforfait</th>
+                <td>{{ inscriptionforfait.idinscriptionforfait }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('inscriptionforfait_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('inscriptionforfait_edit', { 'id': inscriptionforfait.idinscriptionforfait }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

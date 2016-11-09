@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Adherent</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nomadherent</th>
+                <td>{{ adherent.nomadherent }}</td>
+            </tr>
+            <tr>
+                <th>Prenomadherent</th>
+                <td>{{ adherent.prenomadherent }}</td>
+            </tr>
+            <tr>
+                <th>Datenaissadherent</th>
+                <td>{% if adherent.datenaissadherent %}{{ adherent.datenaissadherent|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Teladherent</th>
+                <td>{{ adherent.teladherent }}</td>
+            </tr>
+            <tr>
+                <th>Emailadherent</th>
+                <td>{{ adherent.emailadherent }}</td>
+            </tr>
+            <tr>
+                <th>Idadherent</th>
+                <td>{{ adherent.idadherent }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('adherent_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('adherent_edit', { 'id': adherent.idadherent }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Adherent" table="adherent">
+    <indexes>
+      <index name="I_FK_adherent_reduction" columns="idReduction"/>
+    </indexes>
+    <id name="idadherent" type="integer" column="idAdherent">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nomadherent" type="string" column="nomAdherent" length="32" nullable="true"/>
+    <field name="prenomadherent" type="string" column="prenomAdherent" length="32" nullable="true"/>
+    <field name="datenaissadherent" type="date" column="dateNaissAdherent" nullable="true"/>
+    <field name="teladherent" type="integer" column="telAdherent" nullable="true"/>
+    <field name="emailadherent" type="string" column="eMailAdherent" length="32" nullable="true"/>
+    <many-to-one field="idreduction" target-entity="Reduction">
+      <join-columns>
+        <join-column name="idReduction" referenced-column-name="idReduction"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="idsaison" target-entity="Saison" inversed-by="idadherent">
+      <join-table name="adherer">
+        <join-columns>
+          <join-column name="idAdherent" referenced-column-name="idAdherent"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="idSaison" referenced-column-name="idSaison"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

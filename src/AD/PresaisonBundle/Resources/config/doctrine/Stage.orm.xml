@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AD\PresaisonBundle\Entity\Stage" table="stage">
+    <indexes>
+      <index name="I_FK_stage_salle" columns="idSalle"/>
+      <index name="I_FK_stage_danse" columns="idDanse"/>
+    </indexes>
+    <id name="idstage" type="bigint" column="idStage">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="datestage" type="date" column="dateStage" nullable="true"/>
+    <field name="heuredebutstage" type="time" column="heureDebutStage" nullable="true"/>
+    <field name="heurefinstage" type="time" column="heureFinStage" nullable="true"/>
+    <field name="tarifstage" type="integer" column="tarifStage" nullable="true"/>
+    <field name="plafond" type="integer" column="plafond" nullable="true"/>
+    <field name="seuilviabilite" type="integer" column="seuilViabilite" nullable="true"/>
+    <field name="delaipreinscription" type="integer" column="delaiPreinscription" nullable="true"/>
+    <field name="montantpreinscription" type="integer" column="montantPreinscription" nullable="true"/>
+    <many-to-one field="iddanse" target-entity="Danse">
+      <join-columns>
+        <join-column name="idDanse" referenced-column-name="idDanse"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idsalle" target-entity="Salle">
+      <join-columns>
+        <join-column name="idSalle" referenced-column-name="idSalle"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="idniveau" target-entity="Niveau" mapped-by="idstage"/>
+    <many-to-many field="idstagiaire" target-entity="Stagiaire" inversed-by="idstage">
+      <join-table name="inscriptionstage">
+        <join-columns>
+          <join-column name="idStage" referenced-column-name="idStage"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="idStagiaire" referenced-column-name="idStagiaire"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+  </entity>
+</doctrine-mapping>

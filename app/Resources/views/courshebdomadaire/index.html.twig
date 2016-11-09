@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Courshebdomadaire list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Jourcourshebdo</th>
+                <th>Heuredebutcourshebdo</th>
+                <th>Heurefincourshebdo</th>
+                <th>Idcourshebdo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for courshebdomadaire in courshebdomadaires %}
+            <tr>
+                <td><a href="{{ path('courshebdomadaire_show', { 'id': courshebdomadaire.idcourshebdo }) }}">{{ courshebdomadaire.jourcourshebdo }}</a></td>
+                <td>{% if courshebdomadaire.heuredebutcourshebdo %}{{ courshebdomadaire.heuredebutcourshebdo|date('H:i:s') }}{% endif %}</td>
+                <td>{% if courshebdomadaire.heurefincourshebdo %}{{ courshebdomadaire.heurefincourshebdo|date('H:i:s') }}{% endif %}</td>
+                <td>{{ courshebdomadaire.idcourshebdo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('courshebdomadaire_show', { 'id': courshebdomadaire.idcourshebdo }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('courshebdomadaire_edit', { 'id': courshebdomadaire.idcourshebdo }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('courshebdomadaire_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
